@@ -14,8 +14,8 @@ views = Module(__name__, 'views')
 
 @views.route('/')
 def index():
-	"""Render website's index page."""
-	return render_template('index.html')
+    """Render website's index page."""
+    return render_template('index.html')
 
 
 @views.route('/search/', methods=['POST', 'GET'])
@@ -23,18 +23,18 @@ def search():
     """Add a todo."""
     form = SearchForm()
     if request.method == 'POST' and form.validate_on_submit():
-		"""DO WORK"""
-    
+	"""DO WORK"""
     return render_template('search.html', form=form)
+
 @views.route('/display')
 def display():
-	trends=ReturnWeeklyTrends()
-	return render_template('display.html', trends=trends)
+    trends=ReturnWeeklyTrends()
+    return render_template('display.html', trends=trends)
 		
 
 @views.route('/results/')
 def results():
-		return render_template('results.html')
+    return render_template('results.html')
 
 @views.route('/qunit/')
 def qunit():
