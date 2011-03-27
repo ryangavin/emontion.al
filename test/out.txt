@@ -1,0 +1,5 @@
+<br />
+<b>Warning</b>:  Header may not contain more than a single header, new line detected. in <b>/home/gs/gsapi/api/api/classes/ErrorHandler.php</b> on line <b>40</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /home/gs/gsapi/api/api/classes/ErrorHandler.php:40) in <b>/home/gs/gsapi/api/api/classes/ErrorHandler.php</b> on line <b>42</b><br />
+{"error_code":0,"error_message":"Verification of signature failed (signature base string was \"GET&http%3A%2F%2Fqa.generalsentiment.com%3A8080%2Fapi%2Fv1%2FgetSentiment&endDate%3D20110101%26entityName%3DCharlie%252BSheen%26oauth_body_hash%3D2jmj7l5rSw0yVb%252FvlWAYkK%252FYBwk%253D%26oauth_consumer_key%3D9c528f5ba470e0da2dcdc72ae12318f704d8d2da3%26oauth_nonce%3D37224363%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1301171840%26oauth_version%3D1.0%26startDate%3D20101117\"). with  Array\n(\n    [0] => 97b58cafaff8335942ae5da08712c4ec\n    [1] => \n    [2] => \n)\n"}
