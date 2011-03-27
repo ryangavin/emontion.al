@@ -8,10 +8,5 @@ Forms for your application can be stored in this file.
 
 from flaskext.wtf import Form, TextField, Required
 
-
-class TodoForm(Form):
-    """Simple todo form."""
-    todo = TextField(validators=[Required()])
-
 class SearchForm(Form):
 	search = TextField(validators=[Required()])

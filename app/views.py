@@ -9,22 +9,32 @@ from flask import Module, url_for, render_template, request, redirect
 from models import Todo
 from forms import SearchForm
 from TaskDo import ReturnWeeklyTrends
+import simplejson
+import urllib
 views = Module(__name__, 'views')
 
 
-@views.route('/')
+@views.route('/', methods=['GET', 'POST'])
 def index():
-    """Render website's index page."""
-    return render_template('index.html')
+    form = SearchForm(request.form)
+    if request.method == 'POST':
+        url = "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query="+form.search.data+"&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
+        page = urllib.urlopen(url)
+        line = page.readlines()
+        line = str(line)
+        line = line[41:-3]
+        json = simplejson.loads(line)
+        symbol = json['ResultSet']['Result'][0]['symbol']
+        
+        url = "http://www.google.com/finance/info?infotype=infoquoteall&q="+symbol
+        page = urllib.urlopen(url)
+        line = page.readlines()
+        result = str(line)
 
-
-@views.route('/search/', methods=['POST', 'GET'])
-def search():
-    """Add a todo."""
-    form = SearchForm()
-    if request.method == 'POST' and form.validate_on_submit():
-	"""DO WORK"""
-    return render_template('search.html', form=form)
+        return render_template('display.html', trends=result)
+    else:
+        return render_template('index.html', form=form);
+    
 
 @views.route('/display')
 def display():
